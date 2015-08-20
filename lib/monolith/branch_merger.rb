@@ -21,13 +21,16 @@ module Monolith
     private
 
     def checkout_branch
-      run!("branch #{@branch.name} || true")
-      run!("checkout #{@branch.name}")
+      run!("branch #{@branch} || true")
+      run!("checkout #{@branch}")
     end
 
     def fetch_and_pull_branch
-      run!("fetch #{@repo.name} #{@branch.name}")
-      run!("pull #{@repo.name} #{@branch.name}")
+      run!("fetch #{@repo.name} #{@branch}")
+      run!("pull #{@repo.name} #{@branch}")
+    rescue
+      run!("fetch #{@repo.name} master")
+      run!("pull #{@repo.name} master")
     end
 
     def checkout_previous_branch
