@@ -12,25 +12,21 @@ module Monolith
 
     def merge
       within_working_dir do
-        checkout
-        fetch
-        pull
+        checkout_branch
+        fetch_and_pull_branch
         checkout_previous_branch
       end
     end
 
     private
 
-    def checkout
+    def checkout_branch
       run!("branch #{@branch.name} || true")
       run!("checkout #{@branch.name}")
     end
 
-    def fetch
+    def fetch_and_pull_branch
       run!("fetch #{@repo.name} #{@branch.name}")
-    end
-
-    def pull
       run!("pull #{@repo.name} #{@branch.name}")
     end
 
