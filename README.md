@@ -2,15 +2,22 @@
 
 Generates a single monolithic repository from a list of other git repositories
 
-## How does it work?
+## Why?
 
-> http://www.harecoded.com/merging-two-three-or-more-git-repositories-keeping-the-log-history-2366393
+* [Google Is 2B Lines of Code, All in One Place](https://news.ycombinator.com/item?id=10227000)
+* [On Monolithic Repositories](https://news.ycombinator.com/item?id=10007654)
+* [Advantages of Monolithic Version Control](https://news.ycombinator.com/item?id=9562923)
 
-TODO: summarize the instructions from the url above
+## How?
+
+* [Merging two, three or more git repositories keeping the log history](http://www.harecoded.com/merging-two-three-or-more-git-repositories-keeping-the-log-history-2366393)
+
 
 ## Installation
 
-    gem install monolith
+```bash
+gem install monolith
+```
 
 ## Usage
 
@@ -26,7 +33,7 @@ users: git@github.com:some-org/users.git
 
     monolith help
 
-Use `bin/monolith` instead when developing
+Use `bin/monolith` when developing the gem
 
 ```
 Commands:
@@ -35,4 +42,18 @@ monolith generate NAME   # Generate a new monolith repository NAME
 monolith help [COMMAND]  # Describe available commands or one specific command
 ```
 
-    monolith generate your-repo-name
+```bash
+monolith generate your-repo-name
+```
+
+## Contributing
+
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a future version unintentionally.
+* Commit, do not mess with the version or history.
+* Send me a pull request. Bonus points for topic branches.
+
+## License
+
+[MIT](https://github.com/shuber/monolith/blob/master/LICENSE) - Copyright © 2015 Sean Huber
