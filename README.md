@@ -24,26 +24,31 @@ gem install monolith
 Create a `monolith.yml` file in your working directory with a list of repositories
 
 ```yaml
-admin: git@github.com:some-org/admin.git
-auth: git@github.com:some-org/your-auth-gem.git
-users: git@github.com:some-org/users.git
+path: /path/to/your/new/monolith
+
+repositories:
+  admin: git@github.com:some-org/admin.git
+  auth: git@github.com:some-org/your-auth-gem.git
+  users: git@github.com:some-org/users.git
+
+branches: # optional whitelist
+  - master
 ```
 
-## CLI
+Use the `monolith` command to generate a repository at `/path/to/your/new/monolith`
 
-    monolith help
+```bash
+monolith generate
+```
 
-Use `bin/monolith` when developing the gem
+See `monolith help` for a list of other commands
 
 ```
 Commands:
-monolith config          # List all repositories configured in `monolith.yml`
-monolith generate NAME   # Generate a new monolith repository NAME
+monolith clone           # Clone configured repositories
+monolith config          # List all configured repositories
+monolith generate        # Generate a new monolith from configured repositories
 monolith help [COMMAND]  # Describe available commands or one specific command
-```
-
-```bash
-monolith generate your-repo-name
 ```
 
 ## Contributing
