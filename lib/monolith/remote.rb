@@ -3,7 +3,7 @@ module Monolith
     extend Forwardable
 
     def_delegator :@repo, :run
-    def_delegators :@remote, :name, :relative_path
+    def_delegators :@remote, :name, :path
 
     def initialize(repo, remote)
       @repo = repo
@@ -11,7 +11,7 @@ module Monolith
     end
 
     def add
-      run("remote add #{name} #{relative_path}")
+      run("remote add #{name} #{path}")
     end
 
     def remove

@@ -1,7 +1,5 @@
 module Monolith
   class Application < Repository
-    TMP = ".monolith"
-
     attr_reader :config
 
     def initialize(config)
@@ -23,10 +21,6 @@ module Monolith
 
     def repositories
       RepositoryFinder.new(self)
-    end
-
-    def tmp
-      File.join(path, TMP)
     end
   end
 end
