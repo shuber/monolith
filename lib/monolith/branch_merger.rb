@@ -31,6 +31,8 @@ module Monolith
     rescue
       run!("fetch #{@repo.name} master")
       run!("pull #{@repo.name} master")
+    ensure
+      run!("commit --amend -m '[monolith] Merging #{@repo.name}/master'")
     end
 
     def checkout_previous_branch

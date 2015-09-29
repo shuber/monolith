@@ -7,8 +7,12 @@ module Monolith
       @name = name
     end
 
+    def path
+      [@repo.name, name].join("/")
+    end
+
     def remote
-      "remotes/#{@repo.name}/#{name}"
+      ["remotes", path].join("/")
     end
   end
 end

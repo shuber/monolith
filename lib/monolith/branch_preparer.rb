@@ -2,7 +2,7 @@ module Monolith
   class BranchPreparer
     extend Forwardable
 
-    COMMIT = "Preparing branch %s for merge"
+    COMMIT = "[monolith] Preparing %s"
 
     def_delegators :@repo, :run!, :within_working_dir
 
@@ -43,7 +43,7 @@ module Monolith
     end
 
     def commit_changes
-      message = COMMIT % @branch.remote
+      message = COMMIT % @branch.path
       run!("commit -m '#{message}'")
     end
   end

@@ -3,7 +3,7 @@ module Monolith
     extend Forwardable
 
     BRANCH = "monolith"
-    COMMIT = "Initial monolith commit"
+    COMMIT = "[monolith] Initial commit"
 
     def_delegators :@repo, :run!, :within_working_dir
 

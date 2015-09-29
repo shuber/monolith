@@ -87,12 +87,8 @@ module Monolith
     end
 
     def filtered_branches
-      if @monolith.config.branches.empty?
-        unsorted_branches
-      else
-        unsorted_branches.select do |branch|
-          @monolith.config.branches.include?(branch)
-        end
+      unsorted_branches.select do |branch|
+        @monolith.branch?(branch)
       end
     end
 
