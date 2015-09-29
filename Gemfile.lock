@@ -1,7 +1,16 @@
+PATH
+  remote: .
+  specs:
+    monolith (0.0.0)
+      cocaine
+      colorize
+      formatador
+      thor
+
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.3)
+    activesupport (4.2.4)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -12,10 +21,24 @@ GEM
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
     colorize (0.7.7)
+    diff-lcs (1.2.5)
     formatador (0.2.5)
     i18n (0.7.0)
     json (1.8.3)
-    minitest (5.8.0)
+    minitest (5.8.1)
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+    rspec-core (3.3.2)
+      rspec-support (~> 3.3.0)
+    rspec-expectations (3.3.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-mocks (3.3.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-support (3.3.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
@@ -25,10 +48,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocaine
-  colorize
-  formatador
-  thor
+  monolith!
+  rspec
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
