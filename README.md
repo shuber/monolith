@@ -1,6 +1,6 @@
 # [![Sean Huber](https://cloud.githubusercontent.com/assets/2419/6550752/832d9a64-c5ea-11e4-9717-6f9aa6e023b5.png)](https://github.com/shuber) monolith
 
-[![Gem Version](https://badge.fury.io/rb/monolith.svg)](http://badge.fury.io/rb/monolith)
+[![Code Climate](https://codeclimate.com/github/shuber/monolith/badges/gpa.svg)](https://codeclimate.com/github/shuber/monolith) [![Gem Version](https://badge.fury.io/rb/monolith.svg)](http://badge.fury.io/rb/monolith)
 
 Generates a single monolithic repository from a list of other git repositories
 
