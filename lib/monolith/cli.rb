@@ -16,12 +16,12 @@ module Monolith
     private
 
     def configuration
-      yaml = File.read(file)
-      YAML.load(yaml)
+      @configuration ||= Configuration.new(yaml)
     end
 
-    def file
-      options.fetch(:config, "monolith.yml")
+    def yaml
+      file = options.fetch(:config, "monolith.yml")
+      File.read(file)
     end
   end
 end
