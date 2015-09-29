@@ -8,7 +8,8 @@ module Monolith
 
     def all
       @monolith.config.repositories.map do |(name, url)|
-        Repository.new(name, url)
+        path = File.expand_path(name, Dir.pwd)
+        Repository.new(path, url)
       end
     end
   end

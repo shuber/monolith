@@ -7,6 +7,10 @@ module Monolith
       super(config.path)
     end
 
+    def branch?(name)
+      config.branches.empty? || config.branches.include?(name)
+    end
+
     def checkout_master
       run("checkout master")
     end

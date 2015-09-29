@@ -51,8 +51,10 @@ module Monolith
     def prepare_branches_for_merge
       repositories.each do |repo|
         repo.branches.each do |branch|
-          log("Preparing #{repo.name.blue} branch #{branch.name.light_magenta}")
-          repo.prepare(branch)
+          if @monolith.branch?(branch.name)
+            log("Preparing #{repo.name.blue} branch #{branch.name.light_magenta}")
+            repo.prepare(branch)
+          end
         end
       end
     end
