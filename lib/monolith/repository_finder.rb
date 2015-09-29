@@ -7,7 +7,7 @@ module Monolith
     end
 
     def all
-      @monolith.config.map do |(name, url)|
+      @monolith.config.repositories.map do |(name, url)|
         path = "#{@monolith.tmp}/#{name}"
         Repository.new(path, url)
       end

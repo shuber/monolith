@@ -1,26 +1,43 @@
 module Monolith
   class CLI < Thor
-    desc "config", "List all repositories configured in `monolith.yml`"
-    option :config
+    DEFAULT = "monolith.yml"
+
+    def self.accept_optional_config_file
+      method_option :config,
+        banner: "/path/to/your/config.yml",
+        default: DEFAULT
+    end
+
+    desc "clone", "Clone configured repositories"
+    accept_optional_config_file
+    def clone
+      Generator.new(monolith).clone
+    end
+
+    desc "config", "List all configured repositories"
+    accept_optional_config_file
     def config
       ConfigurationPrinter.new(configuration).print
     end
 
-    desc "generate NAME", "Generate a new monolith repository NAME"
-    option :config
-    def generate(name)
-      monolith = Application.new(name, configuration)
+    desc "generate", "Generate a new monolith from configured repositories"
+    accept_optional_config_file
+    def generate
       Generator.new(monolith).generate
     end
 
     private
+
+    def monolith
+      @monolith ||= Application.new(configuration)
+    end
 
     def configuration
       @configuration ||= Configuration.new(yaml)
     end
 
     def yaml
-      file = options.fetch(:config, "monolith.yml")
+      file = options.fetch("config")
       File.read(file)
     end
   end

@@ -8,6 +8,10 @@ module Monolith
       config.fetch("branches", [])
     end
 
+    def path
+      config.fetch("path")
+    end
+
     def repositories
       config.fetch("repositories")
     end

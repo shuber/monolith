@@ -9,9 +9,16 @@ module Monolith
       @monolith = monolith
     end
 
+    def clone
+      repositories.each do |repo|
+        log("Cloning repository #{repo.name.blue}")
+        repo.clone
+      end
+    end
+
     def generate
+      clone
       create_monolith
-      clone_repositories
       fetch_all_remotes
       add_remotes_to_monolith
       prepare_branches_for_merge
@@ -25,13 +32,6 @@ module Monolith
     def create_monolith
       log("Generating monolith #{name.red}")
       @monolith.create
-    end
-
-    def clone_repositories
-      repositories.each do |repo|
-        log("Cloning repository #{repo.name.blue}")
-        repo.clone
-      end
     end
 
     def fetch_all_remotes
@@ -81,7 +81,17 @@ module Monolith
     end
 
     def branches
-      unsorted_branches.sort
+      filtered_branches.sort
+    end
+
+    def filtered_branches
+      if @monolith.config.branches.empty?
+        unsorted_branches
+      else
+        unsorted_branches.select do |branch|
+          @monolith.config.branches.include?(branch)
+        end
+      end
     end
 
     def unsorted_branches

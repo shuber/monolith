@@ -5,6 +5,7 @@ module Monolith
     end
 
     def print
+      Formatador.display_table([path: @config.path])
       Formatador.display_table(repositories)
       Formatador.display_table(branches) unless branches.empty?
     end

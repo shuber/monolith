@@ -4,9 +4,9 @@ module Monolith
 
     attr_reader :config
 
-    def initialize(path, config)
+    def initialize(config)
       @config = config
-      super(path.to_s)
+      super(config.path)
     end
 
     def checkout_master

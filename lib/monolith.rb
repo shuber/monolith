@@ -28,6 +28,5 @@ require_relative "monolith/repository"
 require_relative "monolith/remote"
 require_relative "monolith/repository_creator"
 require_relative "monolith/repository_finder"
-require_relative "monolith/repository_printer"
 
 require_relative "monolith/application"
