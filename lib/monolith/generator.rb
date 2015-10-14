@@ -18,6 +18,7 @@ module Monolith
 
     def generate
       clone
+      run_after_clone_hooks
       create_monolith
       fetch_all_remotes
       add_remotes_to_monolith
@@ -25,9 +26,24 @@ module Monolith
       merge_branches_into_monolith
       remove_remotes_from_monolith
       checkout_master_on_monolith
+      run_after_generate_hooks
     end
 
     private
+
+    def run_after_clone_hooks
+      @monolith.config.after_clone_hooks.each do |hook|
+        log("Running hook #{hook.inspect}")
+        system(hook)
+      end
+    end
+
+    def run_after_generate_hooks
+      @monolith.config.after_generate_hooks.each do |hook|
+        log("Running hook #{hook.inspect}")
+        system(hook, @monolith.config.path)
+      end
+    end
 
     def create_monolith
       log("Generating monolith #{name.red}")

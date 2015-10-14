@@ -4,6 +4,14 @@ module Monolith
       @yaml = yaml
     end
 
+    def after_clone_hooks
+      config.fetch("after_clone", [])
+    end
+
+    def after_generate_hooks
+      config.fetch("after_generate", [])
+    end
+
     def branches
       config.fetch("branches", [])
     end
