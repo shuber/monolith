@@ -102,7 +102,7 @@ module Monolith
     end
 
     def branches
-      filtered_branches.sort
+      @branches ||= filtered_branches.sort
     end
 
     def filtered_branches
