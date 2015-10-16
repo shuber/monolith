@@ -18,9 +18,9 @@ module Monolith
 
     def generate
       clone
+      fetch_all_remotes
       run_after_clone_hooks
       create_monolith
-      fetch_all_remotes
       add_remotes_to_monolith
       prepare_branches_for_merge
       merge_branches_into_monolith
@@ -33,16 +33,19 @@ module Monolith
 
     def run_after_clone_hooks
       @monolith.config.after_clone_hooks.each do |hook|
-        log("Running hook #{hook.inspect}")
-        system(hook)
+        run_hook(hook)
       end
     end
 
     def run_after_generate_hooks
       @monolith.config.after_generate_hooks.each do |hook|
-        log("Running hook #{hook.inspect}")
-        system(hook, @monolith.config.path)
+        run_hook(hook)
       end
+    end
+
+    def run_hook(hook)
+      log("Running hook #{hook.inspect}")
+      system(hook, @monolith.config.path, *branches)
     end
 
     def create_monolith
