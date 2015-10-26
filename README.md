@@ -33,8 +33,27 @@ repositories:
   auth: git@github.com:some-org/your-auth-gem.git
   users: git@github.com:some-org/users.git
 
-branches: # optional whitelist
+# Optional whitelist of branches to clone. By default,
+# ALL branches are imported into the monolith.
+branches:
   - master
+
+# Optional list of commands to run right after
+# all of the repositories above have been cloned.
+#
+# These are handy for things like rewriting history
+# to remove large unused files or sensitive information.
+after_clone:
+  - ./remove_all_unused_large_files
+
+# Optional list of commands to run after the monolith
+# has been generated.
+#
+# These hooks are handy for things like introducing new top-level
+# config files for services like Heroku, CodeClimate, CircleCI, etc.
+after_generate:
+  - ./add_global_gitignore
+  - ./add_global_slugignore
 ```
 
 Use the `monolith` command to generate a repository at `/path/to/your/new/monolith`
